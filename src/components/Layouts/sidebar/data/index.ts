@@ -2,9 +2,8 @@ import * as Icons from "../icons";
 
 export const NAV_DATA = [
   {
-    label: "MENU",
+    label: "MAIN MENU",
     items: [
-     
       {
         title: "Calendário",
         url: "/",
@@ -24,10 +23,14 @@ export const NAV_DATA = [
         items: [],
       },
       {
-        title: "Login",
-        url: "/auth/sign-in",
+        title: "Authentication",
         icon: Icons.Authentication,
-        items: [],
+        items: [
+          {
+            title: "Login",
+            url: "/auth/sign-in",
+          },
+        ],
       },
     ],
   },
