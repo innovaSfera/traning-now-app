@@ -39,6 +39,24 @@ export function HomeIcon(props: PropsType) {
   );
 }
 
+export function Muscle(props: PropsType) {
+  return (
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path
+        d="M10.682 18C11.407 15.375 13.942 13.5 16.862 13.81C19.642 14.105 21.852 16.45 21.992 19.24C22.027 19.975 21.927 20.68 21.712 21.335C21.582 21.735 21.192 22 20.767 22H5.87603C3.35203 22 1.45903 19.6905 1.95403 17.2155L4.99703 2H10.997L12.997 5.5L8.71203 8.565L7.49703 7M8.71703 8.565L10.997 17"
+        fillRule="evenodd"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
 export function Calendar(props: PropsType) {
   return (
     <svg
@@ -206,4 +224,3 @@ export function Cloud(props: PropsType) {
     </svg>
   );
 }
-

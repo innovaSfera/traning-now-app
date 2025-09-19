@@ -9,10 +9,24 @@ import {
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LogOutIcon, SettingsIcon, UserIcon } from "./icons";
 
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 1280);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  return isDesktop;
+}
+
 export function UserInfo() {
+  const isDesktop = useIsDesktop();
   const [isOpen, setIsOpen] = useState(false);
 
   const USER = {
@@ -41,7 +55,7 @@ export function UserInfo() {
             <ChevronUpIcon
               aria-hidden
               className={cn(
-                "rotate-180 transition-transform xl:flex hidden",
+                "hidden rotate-180 transition-transform xl:flex",
                 isOpen && "rotate-0",
               )}
               strokeWidth={1.5}
@@ -52,7 +66,7 @@ export function UserInfo() {
 
       <DropdownContent
         className="border border-stroke bg-white shadow-md dark:border-dark-3 dark:bg-gray-dark min-[230px]:min-w-[17.5rem]"
-        align="start"
+        align={isDesktop ? "end" : "start"}
       >
         <h2 className="sr-only">User information</h2>
 

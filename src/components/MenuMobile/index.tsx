@@ -8,8 +8,9 @@ import {
   HomeIcon,
   User,
   PieChart,
-  Cloud,
+  Muscle,
 } from "@/components/Layouts/sidebar/icons";
+import InputGroup from "../FormElements/InputGroup";
 
 export default function BottomMenu() {
   const pathname = usePathname();
@@ -27,21 +28,35 @@ export default function BottomMenu() {
     <>
       {/* Modal */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="w-11/12 max-w-md rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800">
-            <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
-              🚀 Meu Modal
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          <div className="w-11/12 max-w-md rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-dark">
+            <h2 className="mb-4 text-2xl font-medium text-gray-900 dark:text-white">
+              Checkin do treino
             </h2>
-            <p className="text-gray-700 dark:text-gray-300">
-              Aqui vai o conteúdo do modal.
-            </p>
 
-            <button
-              onClick={() => setIsOpen(false)}
-              className="mt-4 rounded-lg bg-primary px-4 py-2 text-white hover:bg-primary/80"
-            >
-              Fechar
-            </button>
+            <InputGroup
+              required
+              label="Treino"
+              placeholder="Qual treino?"
+              type="text"
+            />
+
+            <div className="mt-6 flex flex-wrap gap-4">
+              <button
+                type="submit"
+                className="w-full rounded-lg bg-primary px-4 py-2 text-white lg:w-auto"
+              >
+                Confirmar
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="w-full rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 lg:w-auto"
+              >
+                Fechar
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -54,7 +69,7 @@ export default function BottomMenu() {
               onClick={() => setIsOpen(true)}
               className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-primary bg-primary text-white shadow-lg dark:border-[#192c44]"
             >
-              <Cloud className="size-7" />
+              <Muscle className="size-7" />
             </button>
           </div>
 

@@ -104,7 +104,7 @@ export function OverviewMenuCarousel() {
 
   return (
     <div className="mb-4 block xl:hidden">
-      <Swiper spaceBetween={16} slidesPerView={2.3} grabCursor={true}>
+      <Swiper spaceBetween={16} slidesPerView={3.4} grabCursor={true}>
         {menuItems.map(({ key, href, label, data, Icon }) => {
           const isActive = pathname.startsWith(href);
 
