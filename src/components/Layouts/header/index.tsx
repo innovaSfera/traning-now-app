@@ -22,9 +22,9 @@ export function Header() {
 
       <div className="max-xl:hidden">
         <h1 className="mb-0.5 text-heading-5 font-bold text-dark dark:text-white">
-          Dashboard
+          Traning Now
         </h1>
-        <p className="font-medium">Next.js Admin Dashboard Solution</p>
+        <p className="font-medium">Seu treino na palma da mão</p>
       </div>
 
       <div className="flex flex-1 flex-row-reverse items-center justify-between gap-2 min-[375px]:gap-4 xl:flex-row xl:justify-end">

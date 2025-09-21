@@ -8,28 +8,26 @@ export function SignInForm() {
     <ShowcaseSection title="Sign In Form" className="!p-6.5">
       <form action="#">
         <InputGroup
-          label="Email"
+          label="E-mail"
           type="email"
-          placeholder="Enter your email address"
+          placeholder="Digite seu endereço de email"
           className="mb-4.5"
         />
 
         <InputGroup
-          label="Password"
+          label="Senha"
           type="password"
-          placeholder="Enter your password"
+          placeholder="Digite sua senha"
         />
 
         <div className="mb-5.5 mt-5 flex items-center justify-between">
-          <Checkbox label="Remember me" minimal withBg withIcon="check" />
-
           <Link href="#" className="text-body-sm text-primary hover:underline">
-            Forgot password?
+            Esqueceu a senha?
           </Link>
         </div>
 
         <button className="flex w-full justify-center rounded-lg bg-primary p-[13px] font-medium text-white hover:bg-opacity-90">
-          Sign In
+          Entrar
         </button>
       </form>
     </ShowcaseSection>

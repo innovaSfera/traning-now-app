@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -16,6 +16,12 @@ export default function BottomMenu() {
   const pathname = usePathname();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isHolding, setIsHolding] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [showToast, setShowToast] = useState(false);
+  
+  const holdTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const progressTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const menuItems = [
     { href: "/calendar", label: "Calendar", icon: Calendar },
@@ -24,8 +30,86 @@ export default function BottomMenu() {
     { href: "/charts/basic-chart", label: "Charts", icon: PieChart },
   ];
 
+  const handleCheckInStart = () => {
+    setIsHolding(true);
+    setProgress(0);
+    
+    // Timer para completar o check-in após 3 segundos
+    holdTimerRef.current = setTimeout(() => {
+      completeCheckIn();
+    }, 3000);
+
+    // Timer para atualizar o progresso da animação
+    let startTime = Date.now();
+    progressTimerRef.current = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const newProgress = Math.min((elapsed / 3000) * 100, 100);
+      setProgress(newProgress);
+    }, 16); // ~60fps
+  };
+
+  const handleCheckInEnd = () => {
+    setIsHolding(false);
+    setProgress(0);
+    
+    if (holdTimerRef.current) {
+      clearTimeout(holdTimerRef.current);
+      holdTimerRef.current = null;
+    }
+    
+    if (progressTimerRef.current) {
+      clearInterval(progressTimerRef.current);
+      progressTimerRef.current = null;
+    }
+  };
+
+  const completeCheckIn = () => {
+    setIsHolding(false);
+    setProgress(100);
+    setShowToast(true);
+    setIsOpen(false);
+    
+    // Limpar timers
+    if (holdTimerRef.current) {
+      clearTimeout(holdTimerRef.current);
+      holdTimerRef.current = null;
+    }
+    
+    if (progressTimerRef.current) {
+      clearInterval(progressTimerRef.current);
+      progressTimerRef.current = null;
+    }
+
+    // Esconder toast após 3 segundos
+    setTimeout(() => {
+      setShowToast(false);
+      setProgress(0);
+    }, 3000);
+  };
+
+  // Limpar timers quando o componente for desmontado
+  useEffect(() => {
+    return () => {
+      if (holdTimerRef.current) {
+        clearTimeout(holdTimerRef.current);
+      }
+      if (progressTimerRef.current) {
+        clearInterval(progressTimerRef.current);
+      }
+    };
+  }, []);
+
   return (
     <>
+      {/* Toast de Sucesso */}
+      {showToast && (
+        <div className="fixed top-4 left-1/2 z-[60] -translate-x-1/2 transform">
+          <div className="rounded-lg bg-green-500 px-6 py-3 text-white shadow-lg">
+            <p className="font-medium">Check-in realizado com sucesso! ✅</p>
+          </div>
+        </div>
+      )}
+
       {/* Modal */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
@@ -34,21 +118,64 @@ export default function BottomMenu() {
               Checkin do treino
             </h2>
 
-            <InputGroup
-              required
-              label="Treino"
-              placeholder="Qual treino?"
-              type="text"
-            />
+            <div className="flex flex-col items-center justify-center py-8">
+              {/* Botão de Check-in com Animação */}
+              <div className="relative mb-4">
+                {/* Círculo de progresso */}
+                <svg
+                  className="h-32 w-32 -rotate-90 transform"
+                  viewBox="0 0 100 100"
+                >
+                  {/* Círculo de fundo */}
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    fill="transparent"
+                    className="text-gray-200 dark:text-gray-600"
+                  />
+                  {/* Círculo de progresso */}
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="45"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    fill="transparent"
+                    strokeDasharray={`${2 * Math.PI * 45}`}
+                    strokeDashoffset={`${2 * Math.PI * 45 * (1 - progress / 100)}`}
+                    className="text-blue-500 transition-all duration-75 ease-linear"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                
+                {/* Botão principal */}
+                <button
+                  onMouseDown={handleCheckInStart}
+                  onMouseUp={handleCheckInEnd}
+                  onMouseLeave={handleCheckInEnd}
+                  onTouchStart={handleCheckInStart}
+                  onTouchEnd={handleCheckInEnd}
+                  className={`absolute inset-2 flex h-28 w-28 items-center justify-center rounded-full bg-blue-500 text-white shadow-lg transition-all duration-200 hover:bg-blue-600 active:scale-95 ${
+                    isHolding ? 'scale-95 bg-blue-600' : ''
+                  }`}
+                >
+                  <span className="text-center text-sm font-medium leading-tight">
+                    Segure para
+                    <br />
+                    fazer check-in
+                  </span>
+                </button>
+              </div>
+              
+              <p className="text-center text-sm text-gray-600 dark:text-gray-400">
+                Pressione e segure por 3 segundos para confirmar
+              </p>
+            </div>
 
             <div className="mt-6 flex flex-wrap gap-4">
-              <button
-                type="submit"
-                className="w-full rounded-lg bg-primary px-4 py-2 text-white lg:w-auto"
-              >
-                Confirmar
-              </button>
-
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
