@@ -1,26 +1,37 @@
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import { Metadata } from "next";
 import { Suspense } from "react";
 import { OverviewMenuGroup } from "../(home)/_components/overview-cards/index-menu";
 import { OverviewCardsSkeleton } from "../(home)/_components/overview-cards/skeleton";
 import MenuMobile from "@/components/MenuMobile";
+import ButtonModal from "@/components/ui-elements/button-modal";
+import { InvoiceTableClient } from "@/components/Tables/filtro";
+import { getInvoiceTableData } from "@/components/Tables/fetch";
 
-export const metadata: Metadata = {
-  title: "Training Page",
-};
+export default async function Traning() {
+  const data = await getInvoiceTableData();
 
-const TrainingPage = () => {
+  const typedData = data.map((item) => ({
+    ...item,
+    status: item.status as "Fácil" | "Médio" | "Difícil",
+  }));
+
   return (
-    <div className="pb-24">
+    <>
       <Suspense fallback={<OverviewCardsSkeleton />}>
         <OverviewMenuGroup />
       </Suspense>
 
-      <Breadcrumb pageName="Training" />
+      <div className="my-6 flex w-full items-start justify-between gap-6 xl:flex-col">
+        <Breadcrumb pageName="Editando treino" />
+
+        <ButtonModal />
+      </div>
+
+      <div className="space-y-10 pb-24">
+        <InvoiceTableClient data={typedData} />
+      </div>
 
       <MenuMobile />
-    </div>
+    </>
   );
-};
-
-export default TrainingPage;
+}

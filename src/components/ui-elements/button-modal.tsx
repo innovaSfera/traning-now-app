@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Button } from "./button";
 import { ShowcaseSection } from "../Layouts/showcase-section";
 import InputGroup from "../FormElements/InputGroup";
-import DatePickerOne from "../FormElements/DatePicker/DatePickerOne";
 import { Select } from "../FormElements/select";
 import { Plus } from "lucide-react";
 
@@ -17,106 +16,30 @@ export default function ButtonModal() {
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
           <div className="max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl bg-white shadow-lg dark:bg-gray-800">
-            <ShowcaseSection
-              title="Novo cliente"
-              className="space-y-5.5 !p-6.5"
-            >
+            <ShowcaseSection title="Novo treino" className="space-y-5.5 !p-6.5">
               <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                 <InputGroup
                   required
-                  label="Nome"
+                  label="Nome do treino"
                   placeholder="Digite o nome"
                   type="text"
                 />
 
                 <InputGroup
                   required
-                  label="RG"
-                  placeholder="Digite o RG"
-                  type="text"
-                  onInput={(e: React.FormEvent<HTMLInputElement>) => {
-                    let value = e.currentTarget.value.replace(/\D/g, ""); // só números
-                    value = value.replace(/(\d{2})(\d)/, "$1.$2");
-                    value = value.replace(/(\d{3})(\d)/, "$1.$2");
-                    value = value.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
-                    e.currentTarget.value = value;
-                  }}
+                  label="Duração"
+                  placeholder="Digite a duração"
+                  type="number"
                 />
 
-                <DatePickerOne label="Data de nascimento" />
-
                 <Select
-                  label="Status"
+                  label="Satisfação"
                   items={[
                     { label: "Ativo", value: "Ativo" },
                     { label: "Desativo", value: "Desativo" },
                     { label: "Excluido", value: "Excluido" },
                   ]}
                   defaultValue="Ativo"
-                />
-
-                <InputGroup
-                  required
-                  label="Altura"
-                  placeholder="Digite a altura"
-                  type="text"
-                  onInput={(e: React.FormEvent<HTMLInputElement>) => {
-                    let value = e.currentTarget.value.replace(/\D/g, "");
-                    value = (parseInt(value) / 100)
-                      .toFixed(2)
-                      .replace(".", ","); // Ex: 70,50
-                    e.currentTarget.value = value;
-                  }}
-                />
-
-                <InputGroup
-                  required
-                  label="Peso"
-                  placeholder="Digite o peso"
-                  type="text"
-                  onInput={(e: React.FormEvent<HTMLInputElement>) => {
-                    let value = e.currentTarget.value.replace(/\D/g, "");
-                    value = (parseInt(value) / 100)
-                      .toFixed(2)
-                      .replace(".", ","); // Ex: 70,50
-                    e.currentTarget.value = value;
-                  }}
-                />
-
-                <Select
-                  label="Sexo"
-                  items={[
-                    { label: "Masculino", value: "Masculino" },
-                    { label: "Feminino", value: "Feminino" },
-                  ]}
-                  defaultValue="Masculino"
-                />
-
-                <InputGroup
-                  required
-                  label="Endereço"
-                  placeholder="Digite o endereço"
-                  type="text"
-                />
-
-                <InputGroup
-                  required
-                  label="Email"
-                  placeholder="Digite o email"
-                  type="text"
-                />
-
-                <InputGroup
-                  required
-                  label="Telefone"
-                  placeholder="Digite o telefone"
-                  type="tel"
-                  onInput={(e: React.FormEvent<HTMLInputElement>) => {
-                    let value = e.currentTarget.value.replace(/\D/g, "");
-                    value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
-                    value = value.replace(/(\d{5})(\d)/, "$1-$2");
-                    e.currentTarget.value = value;
-                  }}
                 />
               </div>
 
@@ -125,7 +48,7 @@ export default function ButtonModal() {
                   type="submit"
                   className="w-full rounded-lg bg-primary px-4 py-2 text-white lg:w-auto"
                 >
-                  Adicionar
+                  Salvar
                 </button>
 
                 <button
@@ -142,7 +65,7 @@ export default function ButtonModal() {
       )}
 
       <Button
-        label="Novo cliente"
+        label="Novo treino"
         icon={<Plus />}
         variant="primary"
         shape="full"

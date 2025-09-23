@@ -6,23 +6,23 @@ import { InvoiceTable } from "./tabelas";
 type Props = {
   data: {
     name: string;
-    status: "Ativo" | "Desativo" | "Excluido";
+    status: "Fácil" | "Médio" | "Difícil";
   }[];
 };
 
 export function InvoiceTableClient({ data }: Props) {
-  const [filtro, setFiltro] = useState<
-    "Todos" | "Ativo" | "Desativo" | "Excluido"
-  >("Todos");
+  const [filtro, setFiltro] = useState<"Todos" | "Fácil" | "Médio" | "Difícil">(
+    "Todos",
+  );
 
   const clientesFiltrados =
     filtro === "Todos" ? data : data.filter((item) => item.status === filtro);
 
-  const filtros: ("Todos" | "Ativo" | "Desativo" | "Excluido")[] = [
+  const filtros: ("Todos" | "Fácil" | "Médio" | "Difícil")[] = [
     "Todos",
-    "Ativo",
-    "Desativo",
-    "Excluido",
+    "Fácil",
+    "Médio",
+    "Difícil",
   ];
 
   return (

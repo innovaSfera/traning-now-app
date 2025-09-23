@@ -8,12 +8,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
-import { DownloadIcon, PreviewIcon } from "./icons";
+import { PreviewIcon } from "./icons";
 
 type Props = {
   data: {
     name: string;
-    status: "Ativo" | "Desativo" | "Excluido";
+    status: "Fácil" | "Médio" | "Difícil";
+    kg: string;
+    interval: string;
+    loop: string;
   }[];
 };
 
@@ -23,8 +26,11 @@ export function InvoiceTable({ data }: Props) {
       <Table>
         <TableHeader>
           <TableRow className="border-none bg-[#F7F9FC] dark:bg-dark-2 [&>th]:py-4 [&>th]:text-base [&>th]:text-dark [&>th]:dark:text-white">
-            <TableHead className="min-w-[155px] xl:pl-7.5">Nome</TableHead>
-            <TableHead>Status</TableHead>
+            <TableHead className="min-w-[155px] xl:pl-7.5">Exercício</TableHead>
+            <TableHead>Satisfação</TableHead>
+            <TableHead>Carga (kg)</TableHead>
+            <TableHead>Repetições</TableHead>
+            <TableHead>Intervalo</TableHead>
             <TableHead className="text-right xl:pr-7.5">Ações</TableHead>
           </TableRow>
         </TableHeader>
@@ -36,17 +42,29 @@ export function InvoiceTable({ data }: Props) {
                 <h5 className="text-dark dark:text-white">{item.name}</h5>
               </TableCell>
 
+              <TableCell className="min-w-[155px] xl:pl-7.5">
+                <h5 className="text-dark dark:text-white">{item.kg}</h5>
+              </TableCell>
+
+              <TableCell className="min-w-[155px] xl:pl-7.5">
+                <h5 className="text-dark dark:text-white">{item.interval}</h5>
+              </TableCell>
+
+              <TableCell className="min-w-[155px] xl:pl-7.5">
+                <h5 className="text-dark dark:text-white">{item.loop}</h5>
+              </TableCell>
+
               <TableCell>
                 <div
                   className={cn(
                     "max-w-fit rounded-full px-3.5 py-1 text-sm font-medium",
                     {
                       "bg-[#219653]/[0.08] text-[#219653]":
-                        item.status === "Ativo",
+                        item.status === "Fácil",
                       "bg-[#D34053]/[0.08] text-[#D34053]":
-                        item.status === "Excluido",
+                        item.status === "Médio",
                       "bg-[#FFA70B]/[0.08] text-[#FFA70B]":
-                        item.status === "Desativo",
+                        item.status === "Difícil",
                     },
                   )}
                 >
@@ -63,10 +81,6 @@ export function InvoiceTable({ data }: Props) {
                   <button className="hover:text-primary">
                     <span className="sr-only">Delete Invoice</span>
                     <TrashIcon />
-                  </button>
-                  <button className="hover:text-primary">
-                    <span className="sr-only">Download Invoice</span>
-                    <DownloadIcon />
                   </button>
                 </div>
               </TableCell>

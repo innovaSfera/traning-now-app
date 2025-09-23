@@ -12,9 +12,17 @@ export const NAV_DATA = [
       },
       {
         title: "Treinos",
-        url: "/training",
         icon: Icons.Table,
-        items: [],
+        items: [
+          {
+            title: "Personal",
+            url: "/training",
+          },
+          {
+            title: "Aluno",
+            url: "/trainingStudent",
+          },
+        ],
       },
       {
         title: "Perfil",
@@ -23,14 +31,10 @@ export const NAV_DATA = [
         items: [],
       },
       {
-        title: "Authentication",
+        title: "Login",
         icon: Icons.Authentication,
-        items: [
-          {
-            title: "Login",
-            url: "/auth/sign-in",
-          },
-        ],
+        url: "/auth/sign-in",
+        items: [],
       },
     ],
   },

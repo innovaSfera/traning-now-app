@@ -59,7 +59,6 @@ export async function getTableDataUnidade() {
   ];
 }
 
-
 export async function getTableDataCargo() {
   await new Promise((resolve) => setTimeout(resolve, 1400));
 
@@ -168,28 +167,32 @@ export async function getInvoiceTableData() {
 
   return [
     {
-      name: "Iuri",
-      status: "Ativo",
-      price: 12,
-      date: "2025-09-09",
+      name: "Treino de pernas",
+      status: "Médio",
+      kg: "1",
+      interval: "1",
+      loop: "1",
     },
     {
-      name: "Felipe",
-      status: "Desativo",
-      price: 12,
-      date: "2025-09-09",
+      name: "Treino de pernas",
+      status: "Difícil",
+      kg: "1",
+      interval: "1",
+      loop: "1",
     },
     {
-      name: "Gustavo",
-      status: "Excluido",
-      price: 12,
-      date: "2025-09-09",
+      name: "Treino de peitos",
+      status: "Fácil",
+      kg: "1",
+      interval: "1",
+      loop: "1",
     },
     {
-      name: "Vitoria",
-      status: "Ativo",
-      price: 12,
-      date: "2025-09-09",
+      name: "Treino de peitos",
+      status: "Médio",
+      kg: "1",
+      interval: "1",
+      loop: "1",
     },
   ];
 }

@@ -1,9 +1,8 @@
 "use client";
+
 import { EmailIcon, PasswordIcon } from "@/assets/icons";
-import Link from "next/link";
 import React, { useState } from "react";
 import InputGroup from "../FormElements/InputGroup";
-import { Checkbox } from "../FormElements/checkbox";
 
 export default function SigninWithPassword() {
   const [data, setData] = useState({
@@ -33,41 +32,50 @@ export default function SigninWithPassword() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <InputGroup
-        type="email"
-        label="E-mail"
-        className="mb-4 [&_input]:py-[15px]"
-        placeholder="Digite seu endereço de email"
-        name="email"
-        handleChange={handleChange}
-        value={data.email}
-        icon={<EmailIcon />}
-      />
+    <>
+      <h1 className="mb-4 text-2xl font-semibold text-dark dark:text-white sm:text-heading-3">
+        Bem-vindo de volta!
+      </h1>
 
-      <InputGroup
-        type="password"
-        label="Senha"
-        className="mb-5 [&_input]:py-[15px]"
-        placeholder="Digite sua senha"
-        name="password"
-        handleChange={handleChange}
-        value={data.password}
-        icon={<PasswordIcon />}
-      />
+      <p className="w-full max-w-[375px] text-lg font-medium text-dark-4 dark:text-dark-6 mb-10">
+        Por favor, entre com sua conta preenchendo os campos necessários abaixo.
+      </p>
 
+      <form onSubmit={handleSubmit}>
+        <InputGroup
+          type="email"
+          label="E-mail"
+          className="mb-4 [&_input]:py-[15px]"
+          placeholder="Digite seu endereço de email"
+          name="email"
+          handleChange={handleChange}
+          value={data.email}
+          icon={<EmailIcon />}
+        />
 
-      <div className="mb-4.5">
-        <button
-          type="submit"
-          className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-primary p-4 font-medium text-white transition hover:bg-opacity-90"
-        >
-          Entrar
-          {loading && (
-            <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-white border-t-transparent dark:border-primary dark:border-t-transparent" />
-          )}
-        </button>
-      </div>
-    </form>
+        <InputGroup
+          type="password"
+          label="Senha"
+          className="mb-5 [&_input]:py-[15px]"
+          placeholder="Digite sua senha"
+          name="password"
+          handleChange={handleChange}
+          value={data.password}
+          icon={<PasswordIcon />}
+        />
+
+        <div className="mb-4.5">
+          <button
+            type="submit"
+            className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-primary p-4 font-medium text-white transition hover:bg-opacity-90"
+          >
+            Entrar
+            {loading && (
+              <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-white border-t-transparent dark:border-primary dark:border-t-transparent" />
+            )}
+          </button>
+        </div>
+      </form>
+    </>
   );
 }
