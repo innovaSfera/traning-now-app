@@ -3,12 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { OverviewCard2 } from "./card2";
-import {
-  Alphabet,
-  Table,
-  FourCircle,
-  Authentication,
-} from "@/components/Layouts/sidebar/icons";
+import { FourCircle } from "@/components/Layouts/sidebar/icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -17,88 +12,60 @@ export function OverviewMenuCarousel() {
 
   const menuItems = [
     {
-      key: "clientes",
-      href: "/clientes",
-      label: "Clientes",
-      data: "Clientes",
+      key: "1",
+      href: "/menu",
+      label: "Menu",
+      data: "Menu",
       Icon: FourCircle,
     },
     {
-      key: "unidades",
-      href: "/unidades",
-      label: "Unidades",
-      data: "Unidades",
+      key: "2",
+      href: "/menu",
+      label: "Menu",
+      data: "Menu",
       Icon: FourCircle,
     },
     {
-      key: "funcionarios",
-      href: "/funcionarios",
-      label: "Funcionários",
-      data: "Funcionários",
+      key: "3",
+      href: "/menu",
+      label: "Menu",
+      data: "Menu",
       Icon: FourCircle,
     },
     {
-      key: "financeiro",
-      href: "/financeiro",
-      label: "Financeiro",
-      data: "Financeiro",
+      key: "4",
+      href: "/menu",
+      label: "Menu",
+      data: "Menu",
       Icon: FourCircle,
     },
     {
-      key: "servicos",
-      href: "/servicos",
-      label: "Serviços",
-      data: "Serviços",
+      key: "5",
+      href: "/menu",
+      label: "Menu",
+      data: "Menu",
       Icon: FourCircle,
     },
     {
-      key: "cargo",
-      href: "/cargo",
-      label: "Cargo",
-      data: "Cargo",
+      key: "6",
+      href: "/menu",
+      label: "Menu",
+      data: "Menu",
       Icon: FourCircle,
     },
     {
-      key: "authentication",
-      href: "/auth/sign-in",
-      label: "Authentication",
-      data: "Authentication",
-      Icon: Authentication,
-    },
-    {
-      key: "elements",
-      href: "/ui-elements/alerts",
-      label: "Elements",
-      data: "Elements",
+      key: "7",
+      href: "/menu",
+      label: "Menu",
+      data: "Menu",
       Icon: FourCircle,
     },
     {
-      key: "pages",
-      href: "/pages/settings",
-      label: "Pages",
-      data: "Pages",
-      Icon: Alphabet,
-    },
-    {
-      key: "components",
-      href: "/components",
-      label: "Components",
-      data: "Components",
+      key: "8",
+      href: "/menu",
+      label: "Menu",
+      data: "Menu",
       Icon: FourCircle,
-    },
-    {
-      key: "form",
-      href: "/forms/form-elements",
-      label: "Form",
-      data: "Form",
-      Icon: Alphabet,
-    },
-    {
-      key: "table",
-      href: "/tables",
-      label: "Table",
-      data: "Table",
-      Icon: Table,
     },
   ];
 

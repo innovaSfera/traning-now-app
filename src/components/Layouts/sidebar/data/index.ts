@@ -6,7 +6,7 @@ export const NAV_DATA = [
     items: [
       {
         title: "Calendário",
-        url: "/",
+        url: "/calendar",
         icon: Icons.Calendar,
         items: [],
       },
@@ -28,12 +28,6 @@ export const NAV_DATA = [
         title: "Perfil",
         url: "/profile",
         icon: Icons.User,
-        items: [],
-      },
-      {
-        title: "Login",
-        icon: Icons.Authentication,
-        url: "/auth/sign-in",
         items: [],
       },
     ],

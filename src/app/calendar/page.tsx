@@ -5,6 +5,8 @@ import { Suspense } from "react";
 import { OverviewMenuGroup } from "../(home)/_components/overview-cards/index-menu";
 import { OverviewCardsSkeleton } from "../(home)/_components/overview-cards/skeleton";
 import MenuMobile from "@/components/MenuMobile";
+import { Sidebar } from "@/components/Layouts/sidebar";
+import { Header } from "@/components/Layouts/header";
 
 export const metadata: Metadata = {
   title: "Calender Page",
@@ -13,16 +15,24 @@ export const metadata: Metadata = {
 
 const CalendarPage = () => {
   return (
-    <div className="pb-24">
-      <Suspense fallback={<OverviewCardsSkeleton />}>
-        <OverviewMenuGroup />
-      </Suspense>
+    <div className="flex min-h-screen">
+      <Sidebar />
 
-      <Breadcrumb pageName="Calendar" />
+      <div className="w-full bg-gray-2 dark:bg-[#020d1a]">
+        <Header />
 
-      <CalendarBox />
+        <main className="isolate mx-auto w-full max-w-screen-2xl overflow-hidden p-4 pb-24 md:p-6 2xl:p-10">
+          <Suspense fallback={<OverviewCardsSkeleton />}>
+            <OverviewMenuGroup />
+          </Suspense>
 
-      <MenuMobile />
+          <Breadcrumb pageName="Calendar" />
+
+          <CalendarBox />
+
+          <MenuMobile />
+        </main>
+      </div>
     </div>
   );
 };
