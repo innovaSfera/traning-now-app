@@ -122,19 +122,19 @@ export async function getTableDataFuncionarios() {
   return [
     {
       name: "Iuri",
-      status: "Ativo",
+      status: "Fácil",
     },
     {
       name: "Felipe",
-      status: "Ativo",
+      status: "Fácil",
     },
     {
       name: "Gustavo",
-      status: "Excluido",
+      status: "Médio",
     },
     {
       name: "Vitoria",
-      status: "Desativo",
+      status: "Médio",
     },
   ];
 }
@@ -145,19 +145,19 @@ export async function getTableDataFinanceiro() {
   return [
     {
       name: "Iuri",
-      status: "Ativo",
+      status: "Fácil",
     },
     {
       name: "Felipe",
-      status: "Ativo",
+      status: "Fácil",
     },
     {
       name: "Gustavo",
-      status: "Excluido",
+      status: "Médio",
     },
     {
       name: "Vitoria",
-      status: "Desativo",
+      status: "Médio",
     },
   ];
 }
