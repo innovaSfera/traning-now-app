@@ -7,6 +7,9 @@ type Props = {
   data: {
     name: string;
     status: "Fácil" | "Médio" | "Difícil";
+    kg: string;
+    interval: string;
+    loop: string;
   }[];
 };
 
