@@ -5,10 +5,9 @@ import { OverviewCardsSkeleton } from "../(home)/_components/overview-cards/skel
 import { Sidebar } from "@/components/Layouts/sidebar";
 import { Header } from "@/components/Layouts/header";
 import ExerciseList from "@/components/ExerciseList/page";
-
+import MenuMobile from "@/components/MenuMobile";
 
 export default async function TraningStudent() {
-  // Pode vir de uma API ou banco futuramente
   const exercises = [
     {
       id: 1,
@@ -52,6 +51,8 @@ export default async function TraningStudent() {
           <Breadcrumb pageName="Treinos" />
 
           <ExerciseList initialExercises={exercises} />
+
+          <MenuMobile />
         </main>
       </div>
     </div>

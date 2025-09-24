@@ -24,7 +24,6 @@ export default function SigninWithPassword() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // You can remove this code block
     setLoading(true);
 
     setTimeout(() => {
