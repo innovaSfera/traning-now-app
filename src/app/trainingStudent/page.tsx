@@ -8,33 +8,75 @@ import ExerciseList from "@/components/ExerciseList/page";
 import MenuMobile from "@/components/MenuMobile";
 
 export default async function TraningStudent() {
-  const exercises = [
+  const exercisesGroups = [
     {
-      id: 1,
-      name: "Bench Press",
-      reps: 12,
-      weight: "60kg",
-      time: "01:30",
-      media: "/exercicio.jpg",
-      checked: true,
+      groupName: "Treino A",
+      groupImage: "/exercicio.jpg",
+      exercises: [
+        {
+          id: 1,
+          name: "Bench Press",
+          reps: 12,
+          weight: "60kg",
+          time: "01:30",
+          media: "/exercicio.jpg",
+          checked: true,
+        },
+      ],
     },
     {
-      id: 2,
-      name: "Back Squat",
-      reps: 10,
-      weight: "80kg",
-      time: "02:00",
-      media: "/exercicio.jpg",
-      checked: false,
+      groupName: "Treino B",
+      groupImage: "/exercicio2.jpg",
+      exercises: [
+        {
+          id: 3,
+          name: "Back Squat",
+          reps: 10,
+          weight: "80kg",
+          time: "02:00",
+          media: "/exercicio.jpg",
+          checked: false,
+        },
+      ],
     },
     {
-      id: 3,
-      name: "Overhead Press",
-      reps: 8,
-      weight: "40kg",
-      time: "01:00",
-      media: "/exercicio.jpg",
-      checked: false,
+      groupName: "Treino C",
+      groupImage: "/exercicio2.jpg",
+      exercises: [
+        {
+          id: 4,
+          name: "Back Squat",
+          reps: 10,
+          weight: "80kg",
+          time: "02:00",
+          media: "/exercicio.jpg",
+          checked: false,
+        },
+        {
+          id: 5,
+          name: "Overhead Press",
+          reps: 8,
+          weight: "40kg",
+          time: "01:00",
+          media: "/exercicio2.jpg",
+          checked: false,
+        },
+      ],
+    },
+    {
+      groupName: "Treino D",
+      groupImage: "/exercicio.jpg",
+      exercises: [
+        {
+          id: 6,
+          name: "Back Squat",
+          reps: 10,
+          weight: "80kg",
+          time: "02:00",
+          media: "/exercicio2.jpg",
+          checked: false,
+        },
+      ],
     },
   ];
 
@@ -50,7 +92,7 @@ export default async function TraningStudent() {
 
           <Breadcrumb pageName="Treinos" />
 
-          <ExerciseList initialExercises={exercises} />
+          <ExerciseList initialExercises={exercisesGroups} />
 
           <MenuMobile />
         </main>

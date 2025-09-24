@@ -14,6 +14,7 @@
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
     "flatpickr": "^4.6.13",
+    "framer-motion": "^12.23.21",
     "jsvectormap": "^1.6.0",
     "lucide-react": "^0.542.0",
     "next": "^15.4.5",
