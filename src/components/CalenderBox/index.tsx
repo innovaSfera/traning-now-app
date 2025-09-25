@@ -119,7 +119,7 @@ export default function CalendarBox() {
       </div>
 
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-5">
+        <div className="fixed inset-0 z-9999 flex items-center justify-center bg-black/40 p-5">
           <div className="w-full max-w-150 rounded-lg bg-white p-5 shadow-xl dark:bg-gray-dark">
             <div className="mb-4 flex items-center justify-between">
               <h2 className="text-2xl font-medium text-dark dark:text-white w-4/6">
