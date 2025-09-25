@@ -57,11 +57,67 @@ export function Muscle(props: PropsType) {
   );
 }
 
+export function Trash(props: PropsType) {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 40 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <g clipPath="url(#clip0_19664_14)">
+        <path
+          d="M33.75 8.75H6.25"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M16.25 16.25V26.25"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M23.75 16.25V26.25"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M31.25 8.75V32.5C31.25 32.8315 31.1183 33.1495 30.8839 33.3839C30.6495 33.6183 30.3315 33.75 30 33.75H10C9.66848 33.75 9.35054 33.6183 9.11612 33.3839C8.8817 33.1495 8.75 32.8315 8.75 32.5V8.75"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M26.25 8.75V6.25C26.25 5.58696 25.9866 4.95107 25.5178 4.48223C25.0489 4.01339 24.413 3.75 23.75 3.75H16.25C15.587 3.75 14.9511 4.01339 14.4822 4.48223C14.0134 4.95107 13.75 5.58696 13.75 6.25V8.75"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_19664_14">
+          <rect width="40" height="40" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+}
+
 export function Fingerprint(props: PropsType) {
   return (
     <svg
-      width="48"
-      height="48"
+      width="72"
+      height="72"
       viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

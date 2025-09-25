@@ -147,7 +147,7 @@ export default function BottomMenu() {
                   onMouseLeave={handleCheckInEnd}
                   onTouchStart={handleCheckInStart}
                   onTouchEnd={handleCheckInEnd}
-                  className={`absolute inset-2 flex h-28 w-28 items-center justify-center rounded-full bg-primary text-white shadow-lg transition-all duration-200 active:scale-95 ${
+                  className={`absolute inset-2 flex h-28 w-28 items-center justify-center rounded-full bg-[#101727] text-white shadow-lg transition-all duration-200 active:scale-95 ${
                     isHolding ? "scale-95 bg-primary" : ""
                   }`}
                 >
@@ -170,7 +170,7 @@ export default function BottomMenu() {
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="w-full rounded-lg bg-green-400 px-4 py-2 font-medium text-black hover:bg-green-500 lg:w-auto"
+                className="w-full rounded-lg bg-[#33dc0b] px-4 py-2 text-lg font-medium text-black lg:w-auto"
               >
                 Fechar
               </button>
@@ -186,7 +186,7 @@ export default function BottomMenu() {
           <div className="absolute -top-7 left-1/2 z-50 -translate-x-1/2">
             <button
               onClick={() => setIsOpen(true)}
-              className="flex h-15 w-15 items-center justify-center rounded-full border-2 border-primary bg-primary text-white shadow-lg dark:border-[#192c44]"
+              className="flex h-15 w-15 items-center justify-center rounded-full border-2 border-[#f9f9f9] bg-[#101727] text-white shadow-lg dark:border-[#192c44]"
             >
               <Muscle className="size-7" />
             </button>

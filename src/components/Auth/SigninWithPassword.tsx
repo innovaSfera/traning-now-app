@@ -35,7 +35,7 @@ export default function SigninWithPassword() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="mb-4 text-3xl font-semibold text-white sm:text-heading-3"
+        className="mb-4 text-3xl font-semibold text-dark dark:text-white sm:text-heading-3"
       >
         Bem-vindo de volta! 👋
       </motion.h1>
@@ -44,7 +44,7 @@ export default function SigninWithPassword() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.6 }}
-        className="mb-10 w-full max-w-[375px] text-lg font-medium text-white/90"
+        className="mb-10 w-full max-w-[375px] text-lg font-medium text-dark dark:text-white"
       >
         Por favor, entre com sua conta preenchendo os campos necessários abaixo.
       </motion.p>
