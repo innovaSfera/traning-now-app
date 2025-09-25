@@ -9,8 +9,8 @@ import {
   User,
   PieChart,
   Muscle,
+  Fingerprint,
 } from "@/components/Layouts/sidebar/icons";
-import InputGroup from "../FormElements/InputGroup";
 
 export default function BottomMenu() {
   const pathname = usePathname();
@@ -19,7 +19,7 @@ export default function BottomMenu() {
   const [isHolding, setIsHolding] = useState(false);
   const [progress, setProgress] = useState(0);
   const [showToast, setShowToast] = useState(false);
-  
+
   const holdTimerRef = useRef<NodeJS.Timeout | null>(null);
   const progressTimerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -33,30 +33,28 @@ export default function BottomMenu() {
   const handleCheckInStart = () => {
     setIsHolding(true);
     setProgress(0);
-    
-    // Timer para completar o check-in após 3 segundos
+
     holdTimerRef.current = setTimeout(() => {
       completeCheckIn();
     }, 3000);
 
-    // Timer para atualizar o progresso da animação
     let startTime = Date.now();
     progressTimerRef.current = setInterval(() => {
       const elapsed = Date.now() - startTime;
       const newProgress = Math.min((elapsed / 3000) * 100, 100);
       setProgress(newProgress);
-    }, 16); // ~60fps
+    }, 16);
   };
 
   const handleCheckInEnd = () => {
     setIsHolding(false);
     setProgress(0);
-    
+
     if (holdTimerRef.current) {
       clearTimeout(holdTimerRef.current);
       holdTimerRef.current = null;
     }
-    
+
     if (progressTimerRef.current) {
       clearInterval(progressTimerRef.current);
       progressTimerRef.current = null;
@@ -68,42 +66,34 @@ export default function BottomMenu() {
     setProgress(100);
     setShowToast(true);
     setIsOpen(false);
-    
-    // Limpar timers
+
     if (holdTimerRef.current) {
       clearTimeout(holdTimerRef.current);
       holdTimerRef.current = null;
     }
-    
     if (progressTimerRef.current) {
       clearInterval(progressTimerRef.current);
       progressTimerRef.current = null;
     }
 
-    // Esconder toast após 3 segundos
     setTimeout(() => {
       setShowToast(false);
       setProgress(0);
     }, 3000);
   };
 
-  // Limpar timers quando o componente for desmontado
   useEffect(() => {
     return () => {
-      if (holdTimerRef.current) {
-        clearTimeout(holdTimerRef.current);
-      }
-      if (progressTimerRef.current) {
-        clearInterval(progressTimerRef.current);
-      }
+      if (holdTimerRef.current) clearTimeout(holdTimerRef.current);
+      if (progressTimerRef.current) clearInterval(progressTimerRef.current);
     };
   }, []);
 
   return (
     <>
-      {/* Toast de Sucesso */}
+      {/* Toast */}
       {showToast && (
-        <div className="fixed top-4 left-1/2 z-[60] -translate-x-1/2 transform">
+        <div className="fixed left-1/2 top-4 z-[60] -translate-x-1/2 transform">
           <div className="rounded-lg bg-green-500 px-6 py-3 text-white shadow-lg">
             <p className="font-medium">Check-in realizado com sucesso! ✅</p>
           </div>
@@ -114,19 +104,17 @@ export default function BottomMenu() {
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
           <div className="w-11/12 max-w-md rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-dark">
-            <h2 className="mb-4 text-2xl font-medium text-gray-900 dark:text-white">
+            <h2 className="mb-4 text-center text-2xl font-medium text-gray-900 dark:text-white">
               Checkin do treino
             </h2>
 
             <div className="flex flex-col items-center justify-center py-8">
-              {/* Botão de Check-in com Animação */}
               <div className="relative mb-4">
                 {/* Círculo de progresso */}
                 <svg
                   className="h-32 w-32 -rotate-90 transform"
                   viewBox="0 0 100 100"
                 >
-                  {/* Círculo de fundo */}
                   <circle
                     cx="50"
                     cy="50"
@@ -136,7 +124,6 @@ export default function BottomMenu() {
                     fill="transparent"
                     className="text-gray-200 dark:text-gray-600"
                   />
-                  {/* Círculo de progresso */}
                   <circle
                     cx="50"
                     cy="50"
@@ -145,12 +132,14 @@ export default function BottomMenu() {
                     strokeWidth="3"
                     fill="transparent"
                     strokeDasharray={`${2 * Math.PI * 45}`}
-                    strokeDashoffset={`${2 * Math.PI * 45 * (1 - progress / 100)}`}
+                    strokeDashoffset={`${
+                      2 * Math.PI * 45 * (1 - progress / 100)
+                    }`}
                     className="text-blue-500 transition-all duration-75 ease-linear"
                     strokeLinecap="round"
                   />
                 </svg>
-                
+
                 {/* Botão principal */}
                 <button
                   onMouseDown={handleCheckInStart}
@@ -158,20 +147,22 @@ export default function BottomMenu() {
                   onMouseLeave={handleCheckInEnd}
                   onTouchStart={handleCheckInStart}
                   onTouchEnd={handleCheckInEnd}
-                  className={`absolute inset-2 flex h-28 w-28 items-center justify-center rounded-full bg-blue-500 text-white shadow-lg transition-all duration-200 hover:bg-blue-600 active:scale-95 ${
-                    isHolding ? 'scale-95 bg-blue-600' : ''
+                  className={`absolute inset-2 flex h-28 w-28 items-center justify-center rounded-full bg-primary text-white shadow-lg transition-all duration-200 active:scale-95 ${
+                    isHolding ? "scale-95 bg-primary" : ""
                   }`}
                 >
-                  <span className="text-center text-sm font-medium leading-tight">
-                    Segure para
-                    <br />
-                    fazer check-in
+                  <span
+                    className={`text-center text-sm font-medium leading-tight ${
+                      isHolding ? "vibrate" : ""
+                    }`}
+                  >
+                    <Fingerprint />
                   </span>
                 </button>
               </div>
-              
-              <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-                Pressione e segure por 3 segundos para confirmar
+
+              <p className="text-center text-lg font-medium text-gray-600 dark:text-gray-400">
+                Segure para fazer check-in
               </p>
             </div>
 
@@ -179,7 +170,7 @@ export default function BottomMenu() {
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="w-full rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 lg:w-auto"
+                className="w-full rounded-lg bg-green-400 px-4 py-2 font-medium text-black hover:bg-green-500 lg:w-auto"
               >
                 Fechar
               </button>
@@ -188,13 +179,14 @@ export default function BottomMenu() {
         </div>
       )}
 
+      {/* Bottom Menu */}
       <div className="fixed bottom-0 left-0 flex w-full flex-col items-center justify-between bg-[#f9f9f9] text-dark dark:bg-gray-dark dark:text-white xl:hidden">
         <div className="flex w-full items-start justify-between">
           {/* Botão central */}
           <div className="absolute -top-7 left-1/2 z-50 -translate-x-1/2">
             <button
               onClick={() => setIsOpen(true)}
-              className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-primary bg-primary text-white shadow-lg dark:border-[#192c44]"
+              className="flex h-15 w-15 items-center justify-center rounded-full border-2 border-primary bg-primary text-white shadow-lg dark:border-[#192c44]"
             >
               <Muscle className="size-7" />
             </button>
@@ -206,7 +198,7 @@ export default function BottomMenu() {
             return (
               <Link href={href} key={href} className="w-1/3">
                 <div
-                  className={`relative top-0 flex cursor-pointer flex-col items-center justify-center gap-1 border-t-4 p-[32px] transition-all ${
+                  className={`relative top-0 flex cursor-pointer flex-col items-center justify-center gap-1 border-t-4 p-[24px] transition-all ${
                     isActive
                       ? "border-primary bg-[rgba(87,80,241,0.07)] text-primary"
                       : "border-[#f9f9f9] text-[#000] hover:border-primary hover:text-primary dark:border-[#192c44] dark:text-white"

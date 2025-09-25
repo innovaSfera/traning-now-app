@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 export default async function Home() {
   return (
     <div className="rounded-[10px] bg-white shadow-1 dark:bg-gray-dark dark:shadow-card">
+      <div className="animate-float absolute -left-24 -top-24 h-90 w-90 rounded-full bg-gradient-to-r from-purple-500 via-blue-400 to-blue-500 opacity-30 blur-3xl" />
+
       <div className="flex min-h-screen flex-wrap items-center">
         <div className="w-full xl:w-1/2">
           <div className="w-full p-4 sm:p-12.5 xl:p-15 xl:px-45">
