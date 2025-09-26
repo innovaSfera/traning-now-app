@@ -29,7 +29,7 @@ export default async function Traning() {
             <OverviewMenuGroup />
           </Suspense>
 
-          <div className="my-6 flex w-full items-start justify-between gap-6 xl:flex-col">
+          <div className="my-6 flex w-full items-start justify-between gap-6">
             <Breadcrumb pageName="Editando treino" />
 
             <ButtonModal />
