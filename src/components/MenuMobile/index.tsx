@@ -5,11 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Calendar,
-  HomeIcon,
   User,
-  PieChart,
   Muscle,
+  Table,
   Fingerprint,
+  FourCircle,
 } from "@/components/Layouts/sidebar/icons";
 
 export default function BottomMenu() {
@@ -25,9 +25,13 @@ export default function BottomMenu() {
 
   const menuItems = [
     { href: "/calendar", label: "Calendar", icon: Calendar },
-    { href: "/", label: "Dashboard", icon: HomeIcon },
+    {
+      href: "/training",
+      label: "Personal",
+      icon: Table,
+    },
+    { href: "/trainingStudent", label: "Charts", icon: FourCircle },
     { href: "/profile", label: "Profile", icon: User },
-    { href: "/charts/basic-chart", label: "Charts", icon: PieChart },
   ];
 
   const handleCheckInStart = () => {
@@ -147,7 +151,7 @@ export default function BottomMenu() {
                   onMouseLeave={handleCheckInEnd}
                   onTouchStart={handleCheckInStart}
                   onTouchEnd={handleCheckInEnd}
-                  className={`absolute inset-2 flex h-28 w-28 items-center justify-center rounded-full bg-[#101727] text-white shadow-lg transition-all duration-200 active:scale-95 ${
+                  className={`absolute inset-2 flex h-28 w-28 items-center justify-center rounded-full bg-[#5750F1] text-white shadow-lg transition-all duration-200 active:scale-95 ${
                     isHolding ? "scale-95 bg-primary" : ""
                   }`}
                 >
@@ -186,7 +190,7 @@ export default function BottomMenu() {
           <div className="absolute -top-7 left-1/2 z-50 -translate-x-1/2">
             <button
               onClick={() => setIsOpen(true)}
-              className="flex h-15 w-15 items-center justify-center rounded-full border-2 border-[#f9f9f9] bg-[#101727] text-white shadow-lg dark:border-[#192c44]"
+              className="flex h-15 w-15 items-center justify-center rounded-full border-2 border-[#f9f9f9] bg-[#5750F1] text-white shadow-lg dark:border-[#192c44]"
             >
               <Muscle className="size-7" />
             </button>
@@ -200,7 +204,7 @@ export default function BottomMenu() {
                 <div
                   className={`relative top-0 flex cursor-pointer flex-col items-center justify-center gap-1 border-t-4 p-[24px] transition-all ${
                     isActive
-                      ? "border-primary bg-[rgba(87,80,241,0.07)] text-primary"
+                      ? "border-[#5750F1] bg-[rgba(87,80,241,0.07)] text-[#5750F1]"
                       : "border-[#f9f9f9] text-[#000] hover:border-primary hover:text-primary dark:border-[#192c44] dark:text-white"
                   } `}
                 >

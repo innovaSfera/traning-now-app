@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "./button";
 import { ShowcaseSection } from "../Layouts/showcase-section";
 import InputGroup from "../FormElements/InputGroup";
@@ -9,13 +9,37 @@ import { Plus } from "lucide-react";
 
 export default function ButtonModal() {
   const [isOpen, setIsOpen] = useState(false);
+  const modalRef = useRef<HTMLDivElement | null>(null);
+
+  // Fecha ao clicar fora
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
     <>
       {/* Modal */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl bg-white shadow-lg dark:bg-gray-800">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-5">
+          <div
+            ref={modalRef}
+            className="max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-2xl bg-white shadow-lg dark:bg-gray-800"
+          >
             <ShowcaseSection title="Novo treino" className="space-y-5.5 !p-6.5">
               <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                 <InputGroup
@@ -64,6 +88,7 @@ export default function ButtonModal() {
         </div>
       )}
 
+      {/* Botão para abrir modal */}
       <Button
         label="Novo treino"
         icon={<Plus />}

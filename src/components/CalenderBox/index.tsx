@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import InputGroup from "../FormElements/InputGroup";
 import { Trash } from "../Layouts/sidebar/icons";
 
@@ -18,6 +18,29 @@ export default function CalendarBox() {
   const [modalOpen, setModalOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [editingEvent, setEditingEvent] = useState<Event | null>(null);
+
+  // 👉 Referência do container do modal
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  // 👉 Fecha modal ao clicar fora
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        setModalOpen(false);
+      }
+    };
+
+    if (modalOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [modalOpen]);
 
   const handleDayClick = (day: number) => {
     setSelectedDate(day);
@@ -119,10 +142,14 @@ export default function CalendarBox() {
       </div>
 
       {modalOpen && (
-        <div className="fixed inset-0 z-9999 flex items-center justify-center bg-black/40 p-5">
-          <div className="w-full max-w-150 rounded-lg bg-white p-5 shadow-xl dark:bg-gray-dark">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-5">
+          {/* ✅ Modal com ref */}
+          <div
+            ref={modalRef}
+            className="w-full max-w-150 rounded-lg bg-white p-5 shadow-xl dark:bg-gray-dark"
+          >
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-2xl font-medium text-dark dark:text-white w-4/6">
+              <h2 className="w-4/6 text-2xl font-medium text-dark dark:text-white">
                 {editingEvent
                   ? "Editar evento"
                   : `Adicionar evento - Dia ${selectedDate}`}
@@ -131,7 +158,7 @@ export default function CalendarBox() {
               {editingEvent && (
                 <button
                   onClick={() => handleDelete(editingEvent)}
-                  className="rounded-lg bg-red-600 p-3 text-white hover:bg-red-700 w-auto"
+                  className="w-auto rounded-lg bg-red-600 p-3 text-white hover:bg-red-700"
                 >
                   <Trash />
                 </button>
