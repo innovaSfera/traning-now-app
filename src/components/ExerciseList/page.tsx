@@ -48,7 +48,7 @@ export default function ExerciseList({ initialExercises }: Props) {
   };
 
   return (
-    <div className="grid grid-cols-1 items-start gap-6 text-white lg:grid-cols-2">
+    <div className="grid grid-cols-1 items-start gap-6 text-white lg:grid-cols-2 mt-2">
       {groups.map((group) => (
         <div
           key={group.groupName}
@@ -86,17 +86,17 @@ export default function ExerciseList({ initialExercises }: Props) {
                 {group.exercises.map((ex) => (
                   <div
                     key={ex.id}
-                    className={`flex flex-col gap-4 rounded-xl bg-gray-700 p-4 transition ${
+                    className={`flex flex-col gap-4 rounded-xl bg-gray-700 p-4 transition mt-2 ${
                       ex.checked ? "opacity-50" : ""
                     }`}
                   >
-                    <div className="relative h-40 w-full overflow-hidden rounded-lg">
+                    {/* <div className="relative h-40 w-full overflow-hidden rounded-lg">
                       <img
                         src={ex.media}
                         alt={ex.name}
                         className="h-full w-full object-cover"
                       />
-                    </div>
+                    </div> */}
 
                     <div className="flex items-center justify-between">
                       <div>
