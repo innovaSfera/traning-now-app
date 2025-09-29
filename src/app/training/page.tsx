@@ -8,6 +8,11 @@ import { InvoiceTableClient } from "@/components/Tables/filtro";
 import { getInvoiceTableData } from "@/components/Tables/fetch";
 import { Sidebar } from "@/components/Layouts/sidebar";
 import { Header } from "@/components/Layouts/header";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Treinos",
+};
 
 export default async function Traning() {
   const data = await getInvoiceTableData();

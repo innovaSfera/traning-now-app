@@ -10,7 +10,7 @@ import { Sidebar } from "@/components/Layouts/sidebar";
 import { Header } from "@/components/Layouts/header";
 
 export const metadata: Metadata = {
-  title: "Settings Page",
+  title: "Configurações",
 };
 
 export default function SettingsPage() {
@@ -27,7 +27,7 @@ export default function SettingsPage() {
               <OverviewMenuGroup />
             </Suspense>
 
-            <Breadcrumb pageName="Settings" />
+            <Breadcrumb pageName="Configurações" />
 
             <div className="grid grid-cols-5 gap-8 pb-24">
               <div className="col-span-5 xl:col-span-3">

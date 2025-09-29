@@ -9,8 +9,7 @@ import { Sidebar } from "@/components/Layouts/sidebar";
 import { Header } from "@/components/Layouts/header";
 
 export const metadata: Metadata = {
-  title: "Calender Page",
-  // other metadata
+  title: "Calendário",
 };
 
 const CalendarPage = () => {
@@ -26,7 +25,7 @@ const CalendarPage = () => {
             <OverviewMenuGroup />
           </Suspense>
 
-          <Breadcrumb pageName="Calendar" />
+          <Breadcrumb pageName="Calendário" />
 
           <CalendarBox />
 

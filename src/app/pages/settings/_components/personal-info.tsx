@@ -10,16 +10,16 @@ import { ShowcaseSection } from "@/components/Layouts/showcase-section";
 
 export function PersonalInfoForm() {
   return (
-    <ShowcaseSection title="Personal Information" className="!p-7">
+    <ShowcaseSection title="Editar informações" className="!p-7">
       <form>
         <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
           <InputGroup
             className="w-full sm:w-1/2"
             type="text"
             name="fullName"
-            label="Full Name"
-            placeholder="David Jhon"
-            defaultValue="David Jhon"
+            label="Nome completo"
+            placeholder="Fernando Santos"
+            defaultValue="Fernando Santos"
             icon={<UserIcon />}
             height="sm"
           />
@@ -28,9 +28,9 @@ export function PersonalInfoForm() {
             className="w-full sm:w-1/2"
             type="text"
             name="phoneNumber"
-            label="Phone Number"
-            placeholder="+990 3343 7865"
-            defaultValue={"+990 3343 7865"}
+            label="Telefone"
+            placeholder="+55 14 99999-9999"
+            defaultValue={"+55 14 99999-9999"}
             icon={<CallIcon />}
             height="sm"
           />
@@ -40,9 +40,9 @@ export function PersonalInfoForm() {
           className="mb-5.5"
           type="email"
           name="email"
-          label="Email Address"
-          placeholder="devidjond45@gmail.com"
-          defaultValue="devidjond45@gmail.com"
+          label="Email"
+          placeholder="fernandos@gmail.com"
+          defaultValue="fernandos@gmail.com"
           icon={<EmailIcon />}
           height="sm"
         />
@@ -60,8 +60,8 @@ export function PersonalInfoForm() {
 
         <TextAreaGroup
           className="mb-5.5"
-          label="BIO"
-          placeholder="Write your bio here"
+          label="Qual sua meta?"
+          placeholder="Escreva sua meta"
           icon={<PencilSquareIcon />}
           defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lacinia turpis tortor, consequat efficitur mi congue a. Curabitur cursus, ipsum ut lobortis sodales, enim arcu pellentesque lectus ac suscipit diam sem a felis. Cras sapien ex, blandit eu dui et suscipit gravida nunc. Sed sed est quis dui."
         />
@@ -71,14 +71,14 @@ export function PersonalInfoForm() {
             className="rounded-lg border border-stroke px-6 py-[7px] font-medium text-dark hover:shadow-1 dark:border-dark-3 dark:text-white"
             type="button"
           >
-            Cancel
+            Cancelar
           </button>
 
           <button
             className="rounded-lg bg-primary px-6 py-[7px] font-medium text-gray-2 hover:bg-opacity-90"
             type="submit"
           >
-            Save
+            Salvar
           </button>
         </div>
       </form>

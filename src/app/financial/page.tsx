@@ -6,6 +6,11 @@ import MenuMobile from "@/components/MenuMobile";
 import { Sidebar } from "@/components/Layouts/sidebar";
 import { Header } from "@/components/Layouts/header";
 import FinancialCard from "@/components/FinancialCard";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Financeiro",
+};
 
 export default async function Financial() {
   return (

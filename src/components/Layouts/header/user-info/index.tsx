@@ -30,8 +30,8 @@ export function UserInfo() {
   const [isOpen, setIsOpen] = useState(false);
 
   const USER = {
-    name: "John Smith",
-    email: "johnson@nextadmin.com",
+    name: "Fernando",
+    email: "fernandos@gmail.com",
     img: "/images/user/user-03.png",
   };
 
@@ -99,7 +99,7 @@ export function UserInfo() {
           >
             <UserIcon />
 
-            <span className="mr-auto text-base font-medium">View profile</span>
+            <span className="mr-auto text-base font-medium">Ver perfil</span>
           </Link>
 
           <Link
@@ -110,7 +110,7 @@ export function UserInfo() {
             <SettingsIcon />
 
             <span className="mr-auto text-base font-medium">
-              Account Settings
+              Editar conta
             </span>
           </Link>
         </div>
@@ -125,7 +125,7 @@ export function UserInfo() {
           >
             <LogOutIcon />
 
-            <span className="text-base font-medium">Log out</span>
+            <span className="text-base font-medium">Sair da conta</span>
           </Link>
         </div>
       </DropdownContent>

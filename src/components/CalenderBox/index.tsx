@@ -11,8 +11,8 @@ interface Event {
 
 export default function CalendarBox() {
   const [events, setEvents] = useState<Event[]>([
-    { id: 1, date: 1, title: "Redesign Website" },
-    { id: 2, date: 25, title: "App Design" },
+    { id: 1, date: 1, title: "Treino de perna" },
+    { id: 2, date: 25, title: "Cardio" },
   ]);
   const [selectedDate, setSelectedDate] = useState<number | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -111,13 +111,13 @@ export default function CalendarBox() {
           <thead>
             <tr className="grid grid-cols-7 rounded-t-[10px] bg-primary text-white">
               {[
-                "Sunday",
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
+                "Domingo",
+                "Segunda",
+                "Terça",
+                "Quarta",
+                "Quinta",
+                "Sexta",
+                "Sábado",
               ].map((day, i) => (
                 <th
                   key={i}

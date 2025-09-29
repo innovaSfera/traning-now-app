@@ -6,6 +6,11 @@ import { Sidebar } from "@/components/Layouts/sidebar";
 import { Header } from "@/components/Layouts/header";
 import ExerciseList from "@/components/ExerciseList/page";
 import MenuMobile from "@/components/MenuMobile";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Treinos",
+};
 
 export default async function TraningStudent() {
   const exercisesGroups = [
@@ -15,7 +20,7 @@ export default async function TraningStudent() {
       exercises: [
         {
           id: 1,
-          name: "Bench Press",
+          name: "Perna",
           reps: 12,
           weight: "60kg",
           time: "01:30",
@@ -30,7 +35,7 @@ export default async function TraningStudent() {
       exercises: [
         {
           id: 3,
-          name: "Back Squat",
+          name: "Perna",
           reps: 10,
           weight: "80kg",
           time: "02:00",
@@ -45,7 +50,7 @@ export default async function TraningStudent() {
       exercises: [
         {
           id: 4,
-          name: "Back Squat",
+          name: "Perna",
           reps: 10,
           weight: "80kg",
           time: "02:00",
@@ -54,7 +59,7 @@ export default async function TraningStudent() {
         },
         {
           id: 5,
-          name: "Overhead Press",
+          name: "Perna",
           reps: 8,
           weight: "40kg",
           time: "01:00",
@@ -69,7 +74,7 @@ export default async function TraningStudent() {
       exercises: [
         {
           id: 6,
-          name: "Back Squat",
+          name: "Perna",
           reps: 10,
           weight: "80kg",
           time: "02:00",
