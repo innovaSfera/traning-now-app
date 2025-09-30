@@ -1,11 +1,10 @@
-import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import { Suspense } from "react";
+﻿import { Suspense } from "react";
 import { OverviewMenuGroup } from "../(home)/_components/overview-cards/index-menu";
 import { OverviewCardsSkeleton } from "../(home)/_components/overview-cards/skeleton";
 import { Sidebar } from "@/components/Layouts/sidebar";
 import { Header } from "@/components/Layouts/header";
-import ExerciseList from "@/components/ExerciseList/page";
 import MenuMobile from "@/components/MenuMobile";
+<<<<<<< HEAD
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -84,7 +83,16 @@ export default async function TraningStudent() {
       ],
     },
   ];
+=======
+import TrainingStudentClient from "./client";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Treinos",
+};
+>>>>>>> feat/back-end-app-initial
+
+export default function TrainingStudentPage() {
   return (
     <div className="flex min-h-screen">
       <Sidebar />
@@ -95,9 +103,7 @@ export default async function TraningStudent() {
             <OverviewMenuGroup />
           </Suspense>
 
-          <Breadcrumb pageName="Treinos" />
-
-          <ExerciseList initialExercises={exercisesGroups} />
+          <TrainingStudentClient />
 
           <MenuMobile />
         </main>

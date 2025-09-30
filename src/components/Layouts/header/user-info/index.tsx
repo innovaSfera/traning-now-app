@@ -30,8 +30,13 @@ export function UserInfo() {
   const [isOpen, setIsOpen] = useState(false);
 
   const USER = {
+<<<<<<< HEAD
     name: "Fernando",
     email: "fernandos@gmail.com",
+=======
+    name: "Usuário Demo",
+    email: "usuario@exemplo.com",
+>>>>>>> feat/back-end-app-initial
     img: "/images/user/user-03.png",
   };
 
