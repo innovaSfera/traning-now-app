@@ -26,6 +26,7 @@ export const API_ENDPOINTS = {
     GET_BY_ID: "/ClassRoom/GetClassRoomId",
     UPDATE: "/ClassRoom/UpdateClassRoom",
     DISABLE: "/ClassRoom/DesableClassRoom",
+    GET_BY_STUDENT_ID: "/ClassRoom/GetClassRoomStudentId",
   },
   // Adicione mais endpoints conforme necessário
   TRAINING: {

@@ -144,6 +144,22 @@ export class ClassRoomService {
   }
 
   /**
+   * Buscar salas do aluno logado (via token de autenticação)
+   * Esta rota pega o ID do aluno automaticamente do token JWT
+   */
+  static async getClassRoomsByStudentToken(): Promise<ClassRoom[]> {
+    try {
+      const response = await api.get<ClassRoom[]>(
+        API_ENDPOINTS.CLASSROOM.GET_BY_STUDENT_ID
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Erro ao buscar salas do aluno logado:", error);
+      throw error;
+    }
+  }
+
+  /**
    * Buscar salas por personal
    */
   static async getClassRoomsByPersonal(personalId: string): Promise<ClassRoom[]> {

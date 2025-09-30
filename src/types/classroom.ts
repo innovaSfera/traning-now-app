@@ -42,13 +42,38 @@ export interface Aluno extends BaseEntity {
   score?: number;
 }
 
+// Interface para Exercise
+export interface Exercise extends BaseEntity {
+  nome?: string;
+  carga?: string;
+  repeticao?: string;
+  intervalo?: string;
+  observacao?: string | null;
+  linkAula?: string | null;
+  categoria?: string;
+  exerciseTrainings?: ExerciseTraining[] | null;
+}
+
+// Interface para ExerciseTraining
+export interface ExerciseTraining extends BaseEntity {
+  exerciseId?: string;
+  exercise?: Exercise | null;
+  trainingId?: string;
+  training?: Treino | null;
+  carga?: string;
+  repeticao?: string;
+  intervalo?: string;
+  observacao?: string;
+  ordem?: number;
+}
+
 // Interface para Treino
 export interface Treino extends BaseEntity {
   nome?: string;
-  satisfacao?: number | null;
-  exercicio?: string | null;
-  duracao?: string;
-  alunoId?: string | null;
+  satisfacao?: string | null; // "Fácil", "Mediano", "Difícil"
+  duracao?: number; // em minutos
+  aulas?: ClassRoom[] | null;
+  exerciseTrainings?: ExerciseTraining[] | null;
 }
 
 // Interface para Personal
