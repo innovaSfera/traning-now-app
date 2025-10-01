@@ -31,6 +31,12 @@ export const NAV_DATA = [
         items: [],
       },
       {
+        title: "Academia",
+        url: "/academy",
+        icon: Icons.Academy,
+        items: [],
+      },
+      {
         title: "Perfil",
         url: "/profile",
         icon: Icons.User,

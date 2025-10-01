@@ -3,7 +3,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { OverviewCard2 } from "./card2";
-import { FourCircle, CreditCard } from "@/components/Layouts/sidebar/icons";
+import {
+  FourCircle,
+  CreditCard,
+  Academy,
+} from "@/components/Layouts/sidebar/icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -20,10 +24,10 @@ export function OverviewMenuCarousel() {
     },
     {
       key: "2",
-      href: "/menu",
-      label: "Menu",
-      data: "Menu",
-      Icon: FourCircle,
+      href: "/academy",
+      label: "Academia",
+      data: "Academia",
+      Icon: Academy,
     },
     {
       key: "3",

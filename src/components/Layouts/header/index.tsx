@@ -11,7 +11,7 @@ export function Header() {
   const { toggleSidebar, isMobile } = useSidebarContext();
 
   return (
-    <header className="top-0 flex items-center justify-between border-none bg-transparent px-4 py-5 dark:border-stroke-dark dark:bg-gray-dark md:px-5 xl:sticky xl:border-b xl:border-stroke xl:bg-white xl:shadow-1 2xl:px-10">
+    <header className="z-9 top-0 flex items-center justify-between border-none bg-transparent px-4 py-5 dark:border-stroke-dark dark:bg-gray-dark md:px-5 xl:sticky xl:border-b xl:border-stroke xl:bg-white xl:shadow-1 2xl:px-10">
       <button
         onClick={toggleSidebar}
         className="hidden rounded-lg border px-1.5 py-1 dark:border-stroke-dark dark:bg-[#020D1A] hover:dark:bg-[#FFFFFF1A]"
@@ -20,7 +20,7 @@ export function Header() {
         <span className="sr-only">Toggle Sidebar</span>
       </button>
 
-      <div className="max-xl:hidden">
+      <div className="max-xl:hidden overflow-hidden">
         <h1 className="mb-0.5 text-heading-5 font-bold text-dark dark:text-white">
           Traning Now
         </h1>
