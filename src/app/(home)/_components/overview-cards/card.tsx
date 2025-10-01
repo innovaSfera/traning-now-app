@@ -1,51 +1,26 @@
-import { ArrowDownIcon, ArrowUpIcon } from "@/assets/icons";
-import { cn } from "@/lib/utils";
 import type { JSX, SVGProps } from "react";
 
 type PropsType = {
   label: string;
-  data: {
-    value: number | string;
-    growthRate: number;
-  };
+  data: string;
   Icon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+  isActive?: boolean;
 };
 
-export function OverviewCard({ label, data, Icon }: PropsType) {
-  const isDecreasing = data.growthRate < 0;
-
+export function OverviewCard({ data, Icon, isActive = false }: PropsType) {
   return (
-    <div className="rounded-[10px] bg-white p-6 shadow-1 dark:bg-gray-dark">
-      <Icon />
+    <div
+      className={`flex flex-col items-center justify-center rounded-[10px] p-4 shadow-1 transition-all ${
+        isActive
+          ? "border bg-white text-[#5750F1] dark:border-primary dark:bg-[#101727]"
+          : "bg-white text-dark hover:border-primary hover:text-primary dark:bg-gray-dark dark:text-white"
+      } `}
+    >
+      <Icon className="size-6" />
 
-      <div className="mt-6 flex items-end justify-between">
+      <div className="mt-5">
         <dl>
-          <dt className="mb-1.5 text-heading-6 font-bold text-dark dark:text-white">
-            {data.value}
-          </dt>
-
-          <dd className="text-sm font-medium text-dark-6">{label}</dd>
-        </dl>
-
-        <dl
-          className={cn(
-            "text-sm font-medium",
-            isDecreasing ? "text-red" : "text-green",
-          )}
-        >
-          <dt className="flex items-center gap-1.5">
-            {data.growthRate}%
-            {isDecreasing ? (
-              <ArrowDownIcon aria-hidden />
-            ) : (
-              <ArrowUpIcon aria-hidden />
-            )}
-          </dt>
-
-          <dd className="sr-only">
-            {label} {isDecreasing ? "Decreased" : "Increased"} by{" "}
-            {data.growthRate}%
-          </dd>
+          <dt className="text-md mb-1 font-medium">{data}</dt>
         </dl>
       </div>
     </div>

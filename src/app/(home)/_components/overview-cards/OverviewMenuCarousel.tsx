@@ -2,7 +2,7 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { OverviewCard2 } from "./card2";
+import { OverviewCard } from "./card";
 import {
   FourCircle,
   CreditCard,
@@ -82,7 +82,7 @@ export function OverviewMenuCarousel() {
           return (
             <SwiperSlide key={key}>
               <Link href={href}>
-                <OverviewCard2
+                <OverviewCard
                   label={label}
                   data={data}
                   Icon={Icon}
