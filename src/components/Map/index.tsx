@@ -11,6 +11,7 @@ type Gym = {
   distance: string;
   openNow: boolean;
   type: string;
+  image: string;
 };
 
 interface Props {

@@ -13,7 +13,7 @@ const gyms = [
     distance: "238 m de você",
     openNow: true,
     type: "Jiu Jitsu",
-    image: "/fratres.jpg",
+    image: "/academia.jpg",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const gyms = [
     distance: "238 m de você",
     openNow: true,
     type: "CrossFit",
-    image: "/crossfit.jpg",
+    image: "/exercicio.jpg",
   },
 ];
 
