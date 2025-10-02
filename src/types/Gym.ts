@@ -7,4 +7,5 @@ export interface Gym {
   openNow: boolean;
   type: string;
   image: string;
+  category: "Plano" | "Modalidade" | "Comodidade";
 }
