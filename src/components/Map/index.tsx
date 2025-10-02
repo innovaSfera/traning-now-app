@@ -1,30 +1,29 @@
 "use client";
 
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
-import { useState } from "react";
-
-type Gym = {
-  id: number;
-  name: string;
-  lat: number;
-  lng: number;
-  distance: string;
-  openNow: boolean;
-  type: string;
-  image: string;
-};
+import { useEffect, useRef, useState } from "react";
+import { Gym } from "@/types/Gym";
 
 interface Props {
   gyms: Gym[];
   onSelect: (gym: Gym) => void;
+  selectedGym: Gym | null;
 }
 
-export default function Map({ gyms, onSelect }: Props) {
+export default function Map({ gyms, onSelect, selectedGym }: Props) {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY || "",
   });
 
   const [center] = useState({ lat: -23.626, lng: -46.738 });
+  const mapRef = useRef<google.maps.Map | null>(null);
+
+  useEffect(() => {
+    if (selectedGym && mapRef.current) {
+      mapRef.current.panTo({ lat: selectedGym.lat, lng: selectedGym.lng });
+      mapRef.current.setZoom(16);
+    }
+  }, [selectedGym]);
 
   if (!isLoaded) return <div>Carregando mapa...</div>;
 
@@ -33,10 +32,12 @@ export default function Map({ gyms, onSelect }: Props) {
       <GoogleMap
         center={center}
         zoom={14}
+        onLoad={(map) => {
+          mapRef.current = map;
+        }}
         mapContainerClassName="w-full h-full rounded-none"
         options={{
           disableDefaultUI: true,
-          styles: [],
         }}
       >
         {gyms.map((gym) => (

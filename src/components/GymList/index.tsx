@@ -1,22 +1,17 @@
-interface Gym {
-  id: number;
-  name: string;
-  distance: string;
-  openNow: boolean;
-  type: string;
-  image: string;
-}
+import { Gym } from "@/types/Gym";
 
 interface Props {
   gyms: Gym[];
+  onSelect: (gym: Gym) => void;
 }
 
-export default function GymList({ gyms }: Props) {
+export default function GymList({ gyms, onSelect }: Props) {
   return (
     <div className="flex flex-col divide-y divide-stroke dark:divide-dark-3">
       {gyms.map((gym) => (
         <div
           key={gym.id}
+          onClick={() => onSelect(gym)}
           className="flex cursor-pointer gap-3 p-4 hover:bg-gray-100 dark:hover:bg-dark-3"
         >
           <img
