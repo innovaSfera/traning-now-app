@@ -31,9 +31,9 @@ export function OverviewMenuCarousel() {
     },
     {
       key: "3",
-      href: "/menu",
-      label: "Menu",
-      data: "Menu",
+      href: "/notifications",
+      label: "Notificação",
+      data: "Notificação",
       Icon: FourCircle,
     },
     {
