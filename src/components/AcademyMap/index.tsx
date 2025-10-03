@@ -73,7 +73,7 @@ export default function AcademyMap() {
 
   return (
     <div className="h-screen bg-white text-dark dark:bg-gray-dark dark:text-white">
-      <div className="flex gap-2 border-b border-stroke bg-white p-4 shadow-1 dark:border-dark-3 dark:bg-dark-2 dark:shadow-card">
+      <div className="flex flex-wrap gap-2 border-b border-stroke bg-white p-4 shadow-1 dark:border-dark-3 dark:bg-dark-2 dark:shadow-card">
         {["Todos", "Plano", "Modalidade", "Comodidade"].map((filter) => (
           <button
             key={filter}
