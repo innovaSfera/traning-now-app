@@ -9,6 +9,10 @@ export type Exercise = {
   time: string;
   media: string;
   checked: boolean;
+  videoLink?: string;
+  instructions?: string;
+  tips?: string;
+  targetMuscles?: string[];
 };
 
 export interface ExerciseGroup {
@@ -59,6 +63,10 @@ export function convertClassRoomsToExerciseGroups(classRooms: ClassRoom[]): Exer
       time: formatTime(exerciseTraining.intervalo || '60'), // intervalo em segundos para formato MM:SS
       media: getExerciseImage(exerciseTraining.exercise?.nome || ''),
       checked: false,
+      videoLink: exerciseTraining.exercise?.linkAula || undefined,
+      instructions: exerciseTraining.observacao || undefined,
+      tips: undefined,
+      targetMuscles: exerciseTraining.exercise?.categoria ? [exerciseTraining.exercise.categoria] : undefined,
     }));
 
     return {
@@ -142,12 +150,16 @@ export function createFallbackExerciseGroups(): ExerciseGroup[] {
       exercises: [
         {
           id: 1,
-          name: "Perna",
+          name: "Agachamento",
           reps: 12,
           weight: "60kg",
           time: "01:30",
           media: "/exercicio.jpg",
           checked: false,
+          videoLink: "https://www.youtube.com/shorts/xP1wLymF2NE",
+          instructions: "Posicione os pés na largura dos ombros, desça controladamente mantendo o peito ereto e os joelhos alinhados com os pés. Desça até as coxas ficarem paralelas ao chão e suba de forma controlada.",
+          tips: "Mantenha o core sempre contraído e não deixe os joelhos passarem da linha dos pés. Foque em empurrar o chão com os pés durante a subida.",
+          targetMuscles: ["Membros Superiores"]
         },
       ],
     },
@@ -157,12 +169,16 @@ export function createFallbackExerciseGroups(): ExerciseGroup[] {
       exercises: [
         {
           id: 2,
-          name: "Peito",
+          name: "Supino Reto",
           reps: 10,
           weight: "80kg",
           time: "02:00",
           media: "/exercicio2.jpg",
           checked: false,
+          videoLink: "https://www.youtube.com/watch?v=exemplo-supino",
+          instructions: "Deite-se no banco com os pés apoiados no chão. Segure a barra com pegada ligeiramente mais larga que os ombros. Desça a barra controladamente até tocar o peito e empurre de volta à posição inicial.",
+          tips: "Mantenha os ombros retraídos e contraídos durante todo o movimento. Não deixe a barra quicar no peito.",
+          targetMuscles: ["Peitoral Maior", "Tríceps", "Deltóide Anterior"]
         },
       ],
     },
