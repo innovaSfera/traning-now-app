@@ -100,6 +100,7 @@ export interface ClassRoom extends BaseEntity {
   alunoId?: string;
   personalId?: string;
   treinoId?: string;
+  diaSemana?: number; // 1=Domingo, 2=Segunda, ..., 7=Sábado
   
   // Relacionamentos (objetos completos)
   aluno?: Aluno | null;
