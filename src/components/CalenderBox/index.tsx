@@ -10,9 +10,9 @@ interface Event {
   date: number; // Dia da semana (1-7)
   title: string;
   type: 'classroom' | 'custom';
-  classRoomId?: string;
+  classRoomId?: string | null;
   duracao?: number;
-  satisfacao?: string;
+  satisfacao?: string | null;
   alunoNome?: string;
   personalNome?: string;
   treinoNome?: string;

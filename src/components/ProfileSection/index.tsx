@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { CameraIcon } from "@/app/profile/_components/icons";
 
 export default function ProfileSection() {
@@ -100,6 +101,34 @@ export default function ProfileSection() {
               ut. Donec fermentum blandit aliquet. Etiam dictum dapibus
               ultricies. Sed vel aliquet libero.
             </p>
+
+            {/* Link para Anamnese */}
+            <div className="mt-6">
+              <Link
+                href="/anamnese"
+                className="inline-flex items-center gap-2 rounded-lg bg-brand-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-600"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={20}
+                  height={20}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <path d="M12 11h4"></path>
+                  <path d="M12 16h4"></path>
+                  <path d="M8 11h.01"></path>
+                  <path d="M8 16h.01"></path>
+                </svg>
+                Ver Minha Anamnese
+              </Link>
+            </div>
           </div>
         </div>
       </div>

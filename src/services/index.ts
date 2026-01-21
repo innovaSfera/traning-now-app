@@ -5,6 +5,7 @@
 export { AuthService } from "./auth";
 export { ApiService } from "./api";
 export { ClassRoomService } from "./classroom";
+export { AnamneseService } from "./anamnese";
 
 // Re-exportar tipos comuns
 export type {
@@ -26,3 +27,18 @@ export type {
   Personal,
   Gender,
 } from "@/types/classroom";
+
+export type {
+  FichaAnamnese,
+  FichaAnamneseRespondida,
+  PerguntaAnamnese,
+  RespostaAnamneseConfig,
+  RespostaAluno,
+  PreencherAnamneseRequest,
+  TreinoCompativel,
+  VerificacaoLiberacao,
+  ScoreBreakdown,
+  EClassificacaoAnamnese,
+  ETipoPergunta,
+  ENivelRisco,
+} from "@/types/anamnese";

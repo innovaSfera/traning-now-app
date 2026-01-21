@@ -41,4 +41,21 @@ export const API_ENDPOINTS = {
     UPDATE: "/clients",
     DELETE: "/clients",
   },
+  ANAMNESE: {
+    // Fichas (Templates)
+    GET_FICHAS: "/anamnese/fichas",
+    GET_FICHA_BY_ID: "/anamnese/ficha",
+    
+    // Anamnese Respondida
+    GET_ATIVA_ALUNO: "/anamnese/ativa/aluno",
+    GET_HISTORICO_ALUNO: "/anamnese/historico/aluno",
+    GET_BY_ID: "/anamnese/respondida",
+    PREENCHER: "/anamnese/preencher",
+    ADICIONAR_OBSERVACOES: "/anamnese/observacoes",
+    
+    // Compatibilidade e Verificação
+    TREINOS_COMPATIVEIS: "/anamnese/TreinosCompativeis",
+    VERIFICAR_LIBERACAO: "/anamnese/verificar-liberacao",
+    GET_BY_CLASSIFICACAO: "/anamnese/classificacao",
+  },
 } as const;

@@ -10,6 +10,7 @@ import {
   Table,
   Fingerprint,
   FourCircle,
+  ClipboardList,
 } from "@/components/Layouts/sidebar/icons";
 
 export default function BottomMenu() {
@@ -30,7 +31,7 @@ export default function BottomMenu() {
       label: "Personal",
       icon: Table,
     },
-    { href: "/trainingStudent", label: "Charts", icon: FourCircle },
+    { href: "/anamnese", label: "Anamnese", icon: ClipboardList },
     { href: "/profile", label: "Profile", icon: User },
   ];
 

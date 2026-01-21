@@ -25,6 +25,12 @@ export const NAV_DATA = [
         ],
       },
       {
+        title: "Anamnese",
+        url: "/anamnese",
+        icon: Icons.ClipboardList,
+        items: [],
+      },
+      {
         title: "Financeiro",
         url: "/financial",
         icon: Icons.CreditCard,
